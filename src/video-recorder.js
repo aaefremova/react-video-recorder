@@ -103,6 +103,7 @@ export default class VideoRecorder extends Component {
     renderUnsupportedView: PropTypes.func,
     renderErrorView: PropTypes.func,
     renderActions: PropTypes.func,
+    handleDataAvailable: PropTypes.func,
 
     onCameraOn: PropTypes.func,
     onTurnOnCamera: PropTypes.func,
@@ -368,6 +369,7 @@ export default class VideoRecorder extends Component {
   handleDataAvailable = event => {
     if (this.isDataHealthOK(event)) {
       this.recordedBlobs.push(event.data)
+      this.props.handleDataAvailable(event.data)
     }
   }
 
